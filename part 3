@@ -1,0 +1,28 @@
+from tkinter import *
+from tkinter.ttk import *
+import webbrowser
+from functools import partial
+
+
+button_data = [
+("Блюда из курицы",
+"https://www.russianfood.com/recipes/bytype/?fid=933"),
+("Блюда из баранины",
+"https://www.russianfood.com/recipes/bytype/?fid=72"),
+("Блюда из рыбы",
+"https://www.russianfood.com/recipes/bytype/?fid=16")
+]
+
+def open_link(link):
+webbrowser.open(link, new=2)
+
+def convert(units, value_box, first_measure_box, second_measure_box, output):
+try:
+value = float(value_box.get())
+except ValueError:
+output.set("Неправильный ввод")
+return
+first_measure = units[first_measure_box.get()]
+second_measure = units[second_measure_box.get()]
+result = value * first_measure / second_measure
+output.set(result)
